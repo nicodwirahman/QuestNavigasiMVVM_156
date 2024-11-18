@@ -79,6 +79,17 @@ fun FormulirView(
             fontWeight = FontWeight.Bold
         )
 
+        TextField(
+            value = nim,
+            onValueChange = { nim = it },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp),
+            label = { Text("NIM") },
+            placeholder = { Text("Masukkan NIM Anda") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)  // Set keyboard type to number
+        )
+
         // Gender Selection Radio Buttons
         Row(
             modifier = Modifier.fillMaxWidth(),
