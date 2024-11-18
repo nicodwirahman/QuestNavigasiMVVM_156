@@ -114,6 +114,7 @@ fun FormulirView(
                 listData[0] = nama
                 listData[1] = alamat
                 listData[2] = jenisK
+                listData[3] = nim
                 onClickButton(listData)
             },
             modifier = Modifier
