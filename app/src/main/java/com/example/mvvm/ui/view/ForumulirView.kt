@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.mvvm.model.Mahasiswa
 
 @Composable
 fun FormulirView(
@@ -33,11 +34,11 @@ fun FormulirView(
 ) {
     var nama by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
-    var noHp by remember { mutableStateOf("") }
+    var nohp by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
     var jenisK by remember { mutableStateOf("") }
     var nim by remember { mutableStateOf("") }
-    var listData: MutableList<String> = mutableListOf(nama, jenisK, alamat)
+    var listData: MutableList<String> = mutableListOf(nama, jenisK, alamat, nim)
 
     Column(
         modifier = modifier
@@ -51,6 +52,7 @@ fun FormulirView(
             fontSize = 20.sp
         )
 
+
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
@@ -61,8 +63,7 @@ fun FormulirView(
             placeholder = { Text("Masukkan Nama Anda") }
         )
 
-
-
+        // TextField for Alamat
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
@@ -73,12 +74,38 @@ fun FormulirView(
             placeholder = { Text("Masukkan Alamat Anda") }
         )
 
-        Text(
-            modifier = Modifier.padding(top = 8.dp),
-            text = "Jenis Kelamin",
-            fontWeight = FontWeight.Bold
-        )
+        // Jenis Kelamin Section
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Jenis Kelamin",
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.weight(1f)
+            )
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.weight(2f)
+            ) {
+                pilihanJk.forEach { selectedJK ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    ) {
+                        RadioButton(
+                            selected = (jenisK == selectedJK),
+                            onClick = { jenisK = selectedJK }
+                        )
+                        Text(text = selectedJK)
+                    }
+                }
+            }
+        }
 
+        // TextField for NIM
         TextField(
             value = nim,
             onValueChange = { nim = it },
@@ -87,34 +114,18 @@ fun FormulirView(
                 .padding(5.dp),
             label = { Text("NIM") },
             placeholder = { Text("Masukkan NIM Anda") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)  // Set keyboard type to number
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
-        // Gender Selection Radio Buttons
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            pilihanJk.forEach { selectedJK ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(horizontal = 8.dp)
-                ) {
-                    RadioButton(
-                        selected = (jenisK == selectedJK),
-                        onClick = { jenisK = selectedJK }
-                    )
-                    Text(text = selectedJK)
-                }
-            }
-        }
 
+        // Submit Button
         Button(
             onClick = {
                 listData[0] = nama
                 listData[1] = alamat
                 listData[2] = jenisK
                 listData[3] = nim
+                listData[4] = nohp
                 onClickButton(listData)
             },
             modifier = Modifier
