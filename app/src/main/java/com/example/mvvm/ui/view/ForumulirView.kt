@@ -125,6 +125,7 @@ fun FormulirView(
                 .padding(5.dp),
             label = { Text("Nomor Handphone") },
             placeholder = { Text("Masukkan Nomor Handphone Anda") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
 
             )
 
