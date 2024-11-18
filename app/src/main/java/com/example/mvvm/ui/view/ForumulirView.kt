@@ -105,7 +105,7 @@ fun FormulirView(
             }
         }
 
-        // TextField for NIM
+
         TextField(
             value = nim,
             onValueChange = { nim = it },
@@ -117,7 +117,13 @@ fun FormulirView(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
-
+        TextField(
+            value = nohp,
+            onValueChange = { nohp = it },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp),
+        )
 
 
         // Submit Button
