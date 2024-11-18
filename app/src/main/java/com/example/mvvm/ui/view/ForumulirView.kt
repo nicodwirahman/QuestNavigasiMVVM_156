@@ -123,7 +123,10 @@ fun FormulirView(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(5.dp),
-        )
+            label = { Text("Nomor Handphone") },
+            placeholder = { Text("Masukkan Nomor Handphone Anda") },
+
+            )
 
 
         // Submit Button
