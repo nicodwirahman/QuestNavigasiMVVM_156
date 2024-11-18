@@ -43,6 +43,11 @@ fun TampilMahasiswaView(
             isinya = mhs.nim
         )
 
+        TampilData(
+            judul = "no telepon",
+            isinya = mhs.nohp
+        )
+
     }
 }
 
