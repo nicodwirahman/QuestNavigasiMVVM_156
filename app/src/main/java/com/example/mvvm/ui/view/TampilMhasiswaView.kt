@@ -16,7 +16,9 @@ import com.example.mvvm.model.Mahasiswa // Assuming `Mahasiswa` is a model class
 fun TampilMahasiswaView(
     mhs: Mahasiswa
 ) {
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(16.dp)) {
 
 
 
@@ -34,6 +36,11 @@ fun TampilMahasiswaView(
         TampilData(
             judul = "Jenis Kelamin",
             isinya = mhs.gender
+        )
+
+        TampilData(
+            judul = "nim",
+            isinya = mhs.nim
         )
 
     }
