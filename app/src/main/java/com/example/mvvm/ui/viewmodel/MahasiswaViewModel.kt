@@ -18,7 +18,9 @@ class MahasiswaViewModel: ViewModel() {
             data.copy(
                 nama =ls[0],
                 alamat = ls[1],
-                gender = ls[2]
+                gender = ls[2],
+
+
             )
         }
 }
